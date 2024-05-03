@@ -9,6 +9,10 @@ import trees from "./db/trees.js"
 
 import treeRoutes from './routes/trees.js'
 
+import { seedData } from './models/seedFunction.js';
+
+
+
 //express app
 const app = express();
 
@@ -39,8 +43,9 @@ app.use('/api/trees', treeRoutes)
 //seed route
 // app.get("/plants/seed", seed)
 app.get('/plants/seed', async (req, res) => {  
-  await Plant.deleteMany({})
-    await Plant.create(plants)
+  // await Plant.deleteMany({})
+  //   await Plant.create(plants)
+  await seedData()
     res.json('added data to database')
 })
 
