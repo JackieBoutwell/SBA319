@@ -5,9 +5,9 @@ import mongoose from "mongoose";
 
 import Plant from "./models/plant.js"
 import plants from "./models/plants.js"
-import trees from "./models/trees.js"
+import trees from "./db/trees.js"
 
-import treeRoutes from './routes/tree.js'
+import treeRoutes from './routes/trees.js'
 
 //express app
 const app = express();
@@ -19,7 +19,7 @@ await mongoose.connect(process.env.ATLAS_URI)
   // Start the Express server
 //listen for request
 app.listen(process.env.PORT, () => {
-  console.log('listening on port',process.env.PORT);
+  console.log('connect to db & listening on port', process.env.PORT);
 })
 })
   .catch ((error) => {
