@@ -1,44 +1,39 @@
 import express from 'express';
+import trees from "../models/treesModel.js";
+
 const router = express.Router();
 
+// GET all tree data
+router.get("/", (req, res)=> {
+ res.json({message: "Get all trees"})
+}); 
 
-// // GET all tree data
-// router.get("/", (req, res)=> {
-//  res.json({message: "Get all trees"})
-// }); 
+//GET a single tree data
+router.get('/:id', (req, res) => {
+  res.json({ mssg: 'Get a single tree' })
+});
 
-// //GET a single tree data
-// router.get('/:id', (req, res) => {
-//   res.json({ mssg: 'Get a single tree' })
-// });
+//POST a new tree data set
 
-// //POST a new tree data set
-// router.post('/', (req, res) => {
-//   res.json({ mssg: 'Post a new data tree ' })
-// });
+router.post('/', async (req, res) => {
+    const { common_name, plant_family, scientific_name } = req.body
 
-// //Delete a tree
-// router.delete('/:id', (req, res) => {
-//   res.json({ mssg: 'Delete a tree ' })
-// });
+    try {
+        const treeData = await trees.create({ common_name, plant_family, scientific_name })
+        res.status(200).json(treeData)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+});
 
-// //UPDATE a tree
-// router.patch('/:id', (req, res) => {
-//   res.json({ mssg: 'Get a single workout' })
-// });
+//Delete a tree
+router.delete('/:id', (req, res) => {
+  res.json({ mssg: 'Delete a tree ' })
+});
 
-// router.use('/tree', treeRouter);
-// router.get('/', () => { })
-
-// app.get('/:id', async (req, res) => {
-//     let collection = await db.collection("grades")
-//     let query = { _id: new ObjectId(req.params.id) }
-
-//     // db.grades.find({ _id: req.params.id })
-
-//     let result = await collection.findOne(query)
-
-//     res.send(result).status(200)
-// })
+//UPDATE a tree
+router.patch('/:id', (req, res) => {
+  res.json({ mssg: 'Get a single workout' })
+});
 
 export default router;

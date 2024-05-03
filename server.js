@@ -38,8 +38,8 @@ app.use('/api/trees', treeRoutes)
 
 //seed route
 // app.get("/plants/seed", seed)
-app.get('/plants/seed', async (req, res) => {
-    await Plant.deleteMany({})
+app.get('/plants/seed', async (req, res) => {  
+  await Plant.deleteMany({})
     await Plant.create(plants)
     res.json('added data to database')
 })
