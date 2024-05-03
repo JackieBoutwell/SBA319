@@ -5,11 +5,26 @@ import mongoose from "mongoose";
 
 import Plant from "./models/plant.js"
 import plants from "./models/plants.js"
+import trees from "./models/trees.js"
+
+import treeRoutes from './routes/tree.js'
 
 //express app
 const app = express();
 
-await mongoose.connect(process.env.ATLAS_URI);
+//Connecting to db
+await mongoose.connect(process.env.ATLAS_URI)
+  .then(() => {
+  
+  // Start the Express server
+//listen for request
+app.listen(process.env.PORT, () => {
+  console.log('listening on port',process.env.PORT);
+})
+})
+  .catch ((error) => {
+    console.log(error)
+  })
 
 //middleware
 app.use((req, res, next) => {
@@ -19,6 +34,7 @@ app.use((req, res, next) => {
 
 //middleware
 app.use(express.json());
+app.use('/api/trees', treeRoutes)
 
 //seed route
 // app.get("/plants/seed", seed)
@@ -33,14 +49,22 @@ app.get('/plants/', async (req, res) => {
    res.json(plantData)
 })
 
-//routes
+//seed route
+// app.get("/plants/seed", seed)
+// app.get('/trees/seed', async (req, res) => {
+//     await Plant.deleteMany({})
+//     await Plant.create(treeRoutes)
+//     res.json('added data to database')
+// })
+
+// app.get('/trees/', async (req, res) => {
+//   let plantData = await Plant.find({})
+//    res.json(plantData)
+// })
+
+//routes - This was to test the API
 app.get('/', (req, res) => {
     res.json({msg: "Welcome to the app"})
 })
 
-// Start the Express server
-//listen for request
-app.listen(process.env.PORT, () => {
-  console.log('listening on port',process.env.PORT);
-});
 

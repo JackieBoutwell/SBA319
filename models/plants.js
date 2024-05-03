@@ -1,25 +1,25 @@
 let plants = 
 [
-   {
+    {
       "common_name": "Rose",
-      "family": "Rosaceae",
+      "family_name": "Rosaceae",
       "scientific_name": "Rosa"
     },
     {
       "common_name": "Lavender",
-      "family": "Lamiaceae",
+      "family_name": "Lamiaceae",
       "scientific_name": "Lavandula"
     },
     {
       "common_name": "Tomato",
-      "family": "Solanaceae",
+      "family_name": "Solanaceae",
       "scientific_name": "Solanum lycopersicum"
     },
     {
-      "common_name": "Zinnia",
-      "family": "Asteraceae",
-      "scientific_name": "Zinnia elegans"
-    }
+      "common_name": "Sunflower",
+      "family_name": "Asteraceae",
+      "scientific_name": "Helianthus annuus"
+        }
 ]
 
 export default plants
