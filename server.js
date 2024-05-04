@@ -7,7 +7,7 @@ import Plant from "./models/plant.js"
 import plants from "./models/plants.js"
 import trees from "./db/trees.js"
 
-import treeRoutes from './routes/trees.js'
+import flowerRoutes from './routes/flowerPlants.js'
 
 import { seedData } from './models/seedFunction.js';
 
@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 
 //middleware
 app.use(express.json());
-app.use('/api/trees', treeRoutes)
+app.use('/api/flower', flowerRoutes)
 
 //seed route
 // app.get("/plants/seed", seed)
