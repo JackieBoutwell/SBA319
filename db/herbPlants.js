@@ -38,7 +38,17 @@ let herbPlants = [
     "region": "Europe, Asia",
     "grow_zone": "3-7",
     "hardiness": "Cold-hardy"
-  }
+  },
+  {
+    "common_name": "Lemongrass",
+    "plant_family": "Poaceae",
+    "scientific_name": "Cymbopogon citratus",
+    "sunlight_requirements": "Full sun",
+    "water_requirements": "Regular watering",
+    "region": "Tropical regions worldwide",
+    "grow_zone": "9-11",
+    "hardiness": "Tender perennial"
+}
   // Add more herbs here as needed
 ];
 

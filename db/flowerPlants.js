@@ -38,6 +38,16 @@
       "region": "Temperate regions",
       "grow_zone": "4-8",
       "hardiness": "Cold-hardy"
+    },
+    {
+    "common_name": "Dogwood Flower",
+    "plant_family": "Cornaceae",
+    "scientific_name": "Cornus florida",
+    "sunlight_requirements": "Partial shade to full sun",
+    "water_requirements": "Moderate watering",
+    "region": "North America, Asia, Europe",
+    "grow_zone": "5-9",
+    "hardiness": "Cold-hardy"
     }
     // Add more flowers here as needed
   ]

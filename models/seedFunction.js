@@ -3,6 +3,7 @@ import Plant from './plant.js';
 import flowerPlantsSeed from '../db/flowerPlants.js';
 import gardenPlantsSeed from '../db/gardenPlants.js';
 import herbPlantsSeed from '../db/herbPlants.js';
+import treePlantsSeed from '../db/treePlants.js';
 
 async function seedData(){
     try {
@@ -10,7 +11,7 @@ async function seedData(){
         // await Garden.deleteMany({});
         // await Herb.deleteMany({});
 
-        await Plant.insertMany([...flowerPlantsSeed, ...gardenPlantsSeed, ...herbPlantsSeed, ])
+        await Plant.insertMany([...flowerPlantsSeed, ...gardenPlantsSeed, ...herbPlantsSeed, ...treePlantsSeed, ])
 
         // await Garden.insertMany(gardenPlantsSeed)
         // await Herb.insertMany(herbPlantsSeed)

@@ -36,23 +36,18 @@ router.delete('/:id', async (req, res) => {
     res.send(plantData);
     // res.json({ mssg: 'Delete a plant ' })
   } catch (error) {
-    res.send("Error in Deleting the User").status(400);
+    res.send("Error in Deleting the plant data").status(400);
   }
 });
 
 //UPDATE a plant
-router.patch('/:id', (req, res) => {
-
-async function updateUser(req, res){
-    try {
-        const result = await Users.updateOne({ name: req.params.name } ,{ email: req.query["email"]});
-      res.send(result)
-    } catch (error) {
-        res.send("Error in Adding the User").status(400);
+router.put('/:id', async (req, res) => {
+      try {
+        let plantData = await plant.updateMany({ $set: { "common_name": req.body.common_name } })
+      res.send(plantData)
+      } catch (error) {
+        res.send(error.message).status(400);
     }
-}
-
-  res.json({ mssg: 'Update plant' })
 });
 
 export default router;

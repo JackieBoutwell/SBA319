@@ -38,7 +38,17 @@ let gardenPlants = [
     "region": "Temperate regions",
     "grow_zone": "2-11",
     "hardiness": "Cold-hardy"
-  }
+  },
+  {
+    "common_name": "Pumpkin",
+    "plant_family": "Cucurbitaceae",
+    "scientific_name": "Cucurbita pepo",
+    "sunlight_requirements": "Full sun",
+    "water_requirements": "Regular watering",
+    "region": "North America",
+    "grow_zone": "3-9",
+    "hardiness": "Warm-weather crop"
+}
   // Add more garden plants here as needed
 ];
 
