@@ -1,8 +1,5 @@
 import Plant from './plant.js';
 
-// import Garden from './gardenModel.js';
-// import Herb from './herbModel.js';
-
 import flowerPlantsSeed from '../db/flowerPlants.js';
 import gardenPlantsSeed from '../db/gardenPlants.js';
 import herbPlantsSeed from '../db/herbPlants.js';

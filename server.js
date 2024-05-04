@@ -1,17 +1,17 @@
 import express from "express";
 import 'dotenv/config';
+
 // import db from "./db/conn.js"
 import mongoose from "mongoose";
 
+//import schema from mongoose
 import Plant from "./models/plant.js"
-import plants from "./models/plants.js"
-import trees from "./db/trees.js"
 
-import flowerRoutes from './routes/flowerPlants.js'
+// import Routes
+import allPlantRoutes from './routes/allPlants.js'
 
+// import Seed function
 import { seedData } from './models/seedFunction.js';
-
-
 
 //express app
 const app = express();
@@ -20,7 +20,7 @@ const app = express();
 await mongoose.connect(process.env.ATLAS_URI)
   .then(() => {
   
-  // Start the Express server
+// Start the Express server
 //listen for request
 app.listen(process.env.PORT, () => {
   console.log('connect to db & listening on port', process.env.PORT);
@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 
 //middleware
 app.use(express.json());
-app.use('/api/flower', flowerRoutes)
+app.use('/api/allPlants', allPlantRoutes)
 
 //seed route
 // app.get("/plants/seed", seed)

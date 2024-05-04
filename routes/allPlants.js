@@ -29,19 +29,29 @@ router.post('/', async (req, res) => {
     }
 });
 
-//Delete a plant
-router.delete('/:id', (req, res) => {
-  res.json({ mssg: 'Delete a plant ' })
+//DELETE a plant
+router.delete('/:id', async (req, res) => {
+  try {
+    let plantData = await plant.deleteOne({ "_id": req.params.id })
+    res.send(plantData);
+    // res.json({ mssg: 'Delete a plant ' })
+  } catch (error) {
+    res.send("Error in Deleting the User").status(400);
+  }
 });
-
-// router.delete('/:id', async (req, res) => {
-//     let plantData = await plant.delete({ "_id": req.params.id })
-//   res.json(plantData)
-//   res.json({ mssg: 'Delete a plant ' })
-// });
 
 //UPDATE a plant
 router.patch('/:id', (req, res) => {
+
+async function updateUser(req, res){
+    try {
+        const result = await Users.updateOne({ name: req.params.name } ,{ email: req.query["email"]});
+      res.send(result)
+    } catch (error) {
+        res.send("Error in Adding the User").status(400);
+    }
+}
+
   res.json({ mssg: 'Update plant' })
 });
 
