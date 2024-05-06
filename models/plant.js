@@ -11,8 +11,11 @@ const plantSchema = new mongoose.Schema({
     hardiness: { type: String, required: true },
 }, { timestamp: true })
 
-export default mongoose.model('plant', plantSchema)
 
+//  Created an index
+plantSchema.index({ common_name: 1 });
+
+export default mongoose.model('plant', plantSchema)
 
 // changed up schema
 // export default flowerPlants;

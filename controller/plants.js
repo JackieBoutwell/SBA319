@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 //     res.json({msg: "Welcome to the app"})
 // })
 
+
 // GET all plant data
 const getAllPlants = async (req, res) => {
     let plantData = await plant.find({})

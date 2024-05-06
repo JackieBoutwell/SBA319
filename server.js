@@ -11,29 +11,27 @@ import mongoose from "mongoose";
 import plantRoutes from './routes/allPlants.js'
 
 // // import Seed function
-// import { seedData } from './models/seedFunction.js';
+import { seedData } from './models/seedFunction.js';
 //express app
 const app = express();
 
-//Connecting to db
-await mongoose.connect(process.env.ATLAS_URI)
-  .then(() => {
-  
-// Start the Express server
-//listen for request
-app.listen(process.env.PORT, () => {
-  console.log('connect to db & listening on port', process.env.PORT);
-})
-})
-  .catch ((error) => {
-    console.log(error)
-  })
+
 
 //middleware
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
+
+//error handling middleware
+//render view for error
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  const msg = err.message;
+  const title = 'error';
+  res.status(status);
+  res.render('error', { status, msg, title });
+});
 
 //middleware
 app.use(express.json());
@@ -49,12 +47,13 @@ app.use('/api/plants', plantRoutes)
 // app.get("/plants/seed", seed)
 
 
-// app.get('/plants/seed', async (req, res) => {
-//   // await Plant.deleteMany({})
-//   //   await Plant.create(plants)
-//   await seedData()
-//     res.json('added data to database')
-// })
+app.get('/plants/seed', async (req, res) => {
+  console.log("hello")
+  // await Plant.deleteMany({})
+  //   await Plant.create(plants)
+  await seedData()
+    res.json('added data to database')
+})
 
 // app.get('/', async (req, res) => {
 //   let seedData = await Plant.find({})
@@ -77,3 +76,24 @@ app.use('/api/plants', plantRoutes)
 // })
 
 
+//middleware to handling if route not found 404
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = '404';
+  next(err);
+});
+
+
+//Connecting to db
+await mongoose.connect(process.env.ATLAS_URI)
+  .then(() => {
+  
+// Start the Express server
+//listen for request
+app.listen(process.env.PORT, () => {
+  console.log('connect to db & listening on port', process.env.PORT);
+})
+})
+  .catch ((error) => {
+    console.log(error)
+  })
