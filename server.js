@@ -5,14 +5,13 @@ import 'dotenv/config';
 import mongoose from "mongoose";
 
 //import schema from mongoose
-import Plant from "./models/plant.js"
+// import Plant from "./models/plant.js"
 
 // import Routes
-import allPlantRoutes from './routes/allPlants.js'
+import plantRoutes from './routes/allPlants.js'
 
-// import Seed function
-import { seedData } from './models/seedFunction.js';
-
+// // import Seed function
+// import { seedData } from './models/seedFunction.js';
 //express app
 const app = express();
 
@@ -38,21 +37,34 @@ app.use((req, res, next) => {
 
 //middleware
 app.use(express.json());
-app.use('/api/allPlants', allPlantRoutes)
+// app.use('/api/allPlants', allPlantRoutes)
+app.use('/api/plants', plantRoutes)
 
-//seed route
+
+//BLOCKER NEED TO ADD SEED FUNCTION IN MODELS FOILDER
+
+//BLOCKER MOVED THIS TO MY CONTROLLER FOLER.
+
+// seed route
 // app.get("/plants/seed", seed)
-app.get('/plants/seed', async (req, res) => {  
-  // await Plant.deleteMany({})
-  //   await Plant.create(plants)
-  await seedData()
-    res.json('added data to database')
-})
 
-app.get('/plants/', async (req, res) => {
-  let plantData = await Plant.find({})
-   res.json(plantData)
-})
+
+// app.get('/plants/seed', async (req, res) => {
+//   // await Plant.deleteMany({})
+//   //   await Plant.create(plants)
+//   await seedData()
+//     res.json('added data to database')
+// })
+
+
+
+
+// app.get('/', async (req, res) => {
+//   let seedData = await Plant.find({})
+//   res.json(seedData)
+// res.json({message: "WELCOME"})
+// })
+
 
 //seed route
 // app.get("/plants/seed", seed)
@@ -66,10 +78,5 @@ app.get('/plants/', async (req, res) => {
 //   let plantData = await Plant.find({})
 //    res.json(plantData)
 // })
-
-//routes - This was to test the API
-app.get('/', (req, res) => {
-    res.json({msg: "Welcome to the app"})
-})
 
 
