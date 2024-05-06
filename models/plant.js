@@ -14,7 +14,7 @@ const plantSchema = new mongoose.Schema({
 export default mongoose.model('plant', plantSchema)
 
 
-
+// changed up schema
 // export default flowerPlants;
 
 

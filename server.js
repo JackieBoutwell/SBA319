@@ -41,7 +41,7 @@ app.use(express.json());
 app.use('/api/plants', plantRoutes)
 
 
-//BLOCKER NEED TO ADD SEED FUNCTION IN MODELS FOILDER
+//BLOCKER NEED TO ADD SEED FUNCTION IN MODELS FOLDER
 
 //BLOCKER MOVED THIS TO MY CONTROLLER FOLER.
 
@@ -55,9 +55,6 @@ app.use('/api/plants', plantRoutes)
 //   await seedData()
 //     res.json('added data to database')
 // })
-
-
-
 
 // app.get('/', async (req, res) => {
 //   let seedData = await Plant.find({})
