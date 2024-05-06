@@ -16,22 +16,12 @@ import { seedData } from './models/seedFunction.js';
 const app = express();
 
 
-
 //middleware
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
 
-//error handling middleware
-//render view for error
-app.use((err, req, res, next) => {
-  const status = err.status || 500;
-  const msg = err.message;
-  const title = 'error';
-  res.status(status);
-  res.render('error', { status, msg, title });
-});
 
 //middleware
 app.use(express.json());
@@ -83,6 +73,15 @@ app.use((req, res, next) => {
   next(err);
 });
 
+//error handling middleware
+//render view for error
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  const msg = err.message;
+  const title = 'error';
+  res.status(status);
+  res.render('error', { status, msg, title });
+});
 
 //Connecting to db
 await mongoose.connect(process.env.ATLAS_URI)
