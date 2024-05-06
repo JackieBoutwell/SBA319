@@ -71,6 +71,7 @@ const updatePlant = async (req, res) => {
                   "grow_zone": req.body.grow_zone,
                   "hardiness": req.body.hardiness
               }
+              //also could put in req.body
           });
       res.send(plantData)
       } catch (error) {
